@@ -2,12 +2,16 @@
 const Sequelize = require('sequelize')
 
 //conexion local -> mamp
-let database = 'huellitas'
-let userMYSQL = 'root'
-let passMySQL = 'root'
-let hostMySQL = 'localhost'
+// let database = 'huellitas'
+// let userMYSQL = 'root'
+// let passMySQL = 'root'
+// let hostMySQL = 'localhost'
 
-
+//conexion a Heroku
+let database = 'heroku_90bd1279f362a05'
+let userMYSQL = 'b6c6cb672951a0'
+let passMySQL = '2cc0e7c7'
+let hostMySQL = 'eu-cdbr-west-01.cleardb.com'
 
 const db = new Sequelize(database, userMYSQL, passMySQL, {
   host: hostMySQL,
