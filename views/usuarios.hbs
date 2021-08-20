@@ -1,7 +1,7 @@
     <div class="container-fluid">
         <form class="d-flex justify-content-center" action="cargarMascota" method="POST" id="datosMascota">
             <div class="col-lg-6 col-md-8 col-sm-12 bg-grisClaro p-4">
-                <h2 class="formMascota-title text-center mb-2">{{title}}</h2>
+                <h2 class="formMascota-title text-center mb-2">datos de tu mascota</h2>
                 <label class="row g-3 mb-3">
                     <div class="col-6">
                         <input type="text" class="form-control" name="nombreMascota" id="nombreMascota" placeholder="Nombre/Apodo" required>
@@ -78,7 +78,7 @@
         
         document.getElementById('numeroDNI').innerHTML = 1400526
 
-        document.getElementById('imprimirDNI').innerHTML = `<button type="button" class="btn btn-danger" value="imprimirDNI" id="imprimiendo">IMPRIMIR</button>`
+        document.getElementById('imprimirDNI').innerHTML = `<button type="button" class="btn btn-danger" value="imprimirDNI" id="imprimiendo" onClick="window.print()">IMPRIMIR</button>`
         
     }) 
 

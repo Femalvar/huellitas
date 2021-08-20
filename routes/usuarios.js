@@ -9,14 +9,14 @@ let router = express.Router();
 const db = require('../config/db')
 
 // Data a pasar
-let title = "nombre"
+// let title = "datos de tu mascota"
 // let placeholderNac = "Nacimiento"
 
 
 /* GET usuarios to render. */
 router.get('/', function(req, res, next) {
 
-  res.render('usuarios.hbs',{title})
+  res.render('usuarios.hbs')
 
 });
 

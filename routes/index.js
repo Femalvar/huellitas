@@ -2,7 +2,8 @@ var express = require('express');
 const Sequelize = require('sequelize')
 var router = express.Router();
 
-let title = "Mi huellita"
+let nombre = "Mi huellita"
+
 let emailRegistrado = "El email ya esta registrado!"
 // let abrirModal = () => {"#RegistroModal".modal("show")}
 let abrirModal = () => {
@@ -23,7 +24,7 @@ db.authenticate()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index.hbs', { title: 'huellitas' });
+  res.render('index.hbs', {nombre});
 });
 
 //Cargar Usuario
@@ -50,9 +51,10 @@ router.post('/', async (req,res) => {
             email: newUser.email,
             password: newUser.password,
             
-        })    
-    
-        res.render("usuarios.hbs",{nombre,alta:true})
+        })
+        
+          res.render('usuarios',{nombre:newUser.nombre})
+          console.log('registro OK')
         
     } catch (error) {
         console.log("Error de alta "+error)
@@ -63,10 +65,10 @@ router.post('/', async (req,res) => {
 // Datos FORM LOGIN
 router.post('/', async (req,res) => {
   const userLogin = {
-    // emailUser: req.body.emailUser,
-    // claveUser: req.body.claveUser,
-    email: req.body.emailUser,
-    password: req.body.claveUser,
+    mail: req.body.emailUser,
+    clave: req.body.claveUser,
+    // email: req.body.emailUser,
+    // password: req.body.claveUser,
       
     }
     console.log(userLogin)
@@ -76,18 +78,17 @@ router.post('/', async (req,res) => {
   router.get('/',async (req,res) => {
 
     try {
-      const inUser = await tablaUsuarios.findAll({
+      const inUser = await tablaUsuarios.findOne({
         where:{
-          // email: emailUser,
-          // password: claveUser,
-          email: userLogin.email,
-          password: userLogin.password,
+          email: userLogin.mail,
+          password: userLogin.clave,
         }
           
       })    
-      res.render('usuarios.hbs',{title})
+      res.render('usuarios')
       
     } catch (error) {
+      res.render('usuarios')
       console.log("Error de Login "+error)
     }
 
